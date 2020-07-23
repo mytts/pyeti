@@ -52,7 +52,16 @@ class YetiApi(object):
         Returns:
            JSON representation of the requested Entity."""
         return self._make_get("entity/{}".format(entity_id))
-
+    
+    def entity_delete(self, entityid):
+        """Deletes an entity.
+            :param entity: The entity's ObjectID
+            :type objectid:str
+            :return: Operation status in JSON.
+        """
+        self._make_delete('entity/{}'.format(entityid))
+        return {'status': 'deleted', 'id': entityid}
+    
     def related_indicators(self, entity, **kwargs):
         """Fetches indicators linked to a given entity.
            :param entity: JSON dict representing the Entity to search indicators for.
